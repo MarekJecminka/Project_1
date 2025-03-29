@@ -33,6 +33,11 @@ TEXTS = [
     garpike and stingray are also present.'''
 ]
 
+TEXT_0 = TEXTS[0].replace(".", "").replace("\n", "").replace(",", "").split(" ")
+TEXT_1 = TEXTS[1].replace(".", "").replace("\n", "").replace(",", "").split(" ")
+TEXT_2 = TEXTS[2].replace(".", "").replace("\n", "").replace(",", "").split(" ")
+TEXTS_modified = [TEXT_0, TEXT_1, TEXT_2]
+
 registered = {"bob": "123", "ann": "pass123", "mike": "password123", "liz": "pass123"}
 
 user_name = input("Please enter your username: ")
@@ -52,4 +57,52 @@ elif registered[user_name] == user_password:
           "\nWe have 3 texts to be analyzed.")
     print(40 * "-")
     selection = input("Enter a number btw. 1 and 3 to select: ")
+
+    if not selection.isdigit():
+        print("Yous selection is not digit. Please enter digit next time!")
+        quit()
+
+    elif selection not in ("1", "2", "3"):
+        print("Your selection is not in range. Please enter a number btw. 1 and 3 next time!")
+        quit()
+    
+    words = []
+    title_words = []
+    upper_words = []
+    lower_words = []
+    numbers = []
+
+    for word in TEXTS_modified[int(selection) - 1]:
+        if word != "":
+            words.append(word) 
+        
+    for word in TEXTS_modified[int(selection) - 1]:
+        if word.istitle():
+            title_words.append(word)
+        elif word.isupper():
+            upper_words.append(word)
+        elif word.islower():
+            lower_words.append(word)
+        elif word.isdigit():
+            numbers.append(int(word))
+    
+    print(40 * "-")
+    print("There are", len(words), "words in the selected text.")
+    print("There are", len(title_words), "titlecase words.")
+    print("There are", len(upper_words), "uppercase words.")
+    print("There are", len(lower_words), "lowercase words.")
+    print("There are", len(numbers), "numeric strings")
+    print("The sum of all the numbers", sum(numbers))
+    print(40 * "-")
+
+    words_length = []
+    
+    for word in words:
+        words_length.append(len(word))
+
+    for number in range(1, max(words_length) + 1):
+        if number < 10:
+            print(" " + str(number) + "|" + words_length.count(number) * "*" + (21 - words_length.count(number)) * " " + "|" + str(words_length.count(number)))
+        else:
+            print(str(number) + "|" + words_length.count(number) * "*" + (21 - words_length.count(number)) * " " + "|" + str(words_length.count(number)))
 
