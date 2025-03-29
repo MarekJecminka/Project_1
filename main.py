@@ -94,6 +94,8 @@ elif registered[user_name] == user_password:
     print("There are", len(numbers), "numeric strings")
     print("The sum of all the numbers", sum(numbers))
     print(40 * "-")
+    print("LEN|     OCCURENCES      |NR.")
+    print(40 * "-")
 
     words_length = []
     
@@ -102,7 +104,7 @@ elif registered[user_name] == user_password:
 
     for number in range(1, max(words_length) + 1):
         if number < 10:
-            print(" " + str(number) + "|" + words_length.count(number) * "*" + (21 - words_length.count(number)) * " " + "|" + str(words_length.count(number)))
+            print("  " + str(number) + "|" + words_length.count(number) * "*" + (21 - words_length.count(number)) * " " + "|" + str(words_length.count(number)))
         else:
-            print(str(number) + "|" + words_length.count(number) * "*" + (21 - words_length.count(number)) * " " + "|" + str(words_length.count(number)))
+            print(" " + str(number) + "|" + words_length.count(number) * "*" + (21 - words_length.count(number)) * " " + "|" + str(words_length.count(number)))
 
