@@ -33,11 +33,6 @@ TEXTS = [
     garpike and stingray are also present.'''
 ]
 
-TEXT_0 = TEXTS[0].replace(".", "").replace("\n", "").replace(",", "").split(" ")
-TEXT_1 = TEXTS[1].replace(".", "").replace("\n", "").replace(",", "").split(" ")
-TEXT_2 = TEXTS[2].replace(".", "").replace("\n", "").replace(",", "").split(" ")
-TEXTS_modified = [TEXT_0, TEXT_1, TEXT_2]
-
 registered = {"bob": "123", "ann": "pass123", "mike": "password123", "liz": "pass123"}
 
 user_name = input("Please enter your username: ")
@@ -54,16 +49,16 @@ elif registered[user_name] == user_password:
           "\npassword:" + user_password)
     print(40 * "-")
     print("Welcome to the app,", user_name,
-          "\nWe have 3 texts to be analyzed.")
+          "\nWe have", str(len(TEXTS)), "texts to be analyzed.")
     print(40 * "-")
-    selection = input("Enter a number btw. 1 and 3 to select: ")
+    selection = input("Enter a number btw. 1 and " + str(len(TEXTS)) + " to select: ")
 
     if not selection.isdigit():
         print("Yous selection is not digit. Please enter digit next time!")
         quit()
 
-    elif selection not in ("1", "2", "3"):
-        print("Your selection is not in range. Please enter a number btw. 1 and 3 next time!")
+    elif int(selection) not in range(1, len(TEXTS) + 1):
+        print("Your selection is not in range. Please enter a number btw. 1 and " + str(len(TEXTS)) + " next time!")
         quit()
     
     words = []
@@ -72,11 +67,10 @@ elif registered[user_name] == user_password:
     lower_words = []
     numbers = []
 
-    for word in TEXTS_modified[int(selection) - 1]:
-        if word != "":
-            words.append(word) 
-        
-    for word in TEXTS_modified[int(selection) - 1]:
+    for word in TEXTS[int(selection) - 1].split():
+        words.append(word.strip(',.'))
+    
+    for word in words:
         if word.istitle():
             title_words.append(word)
         elif word.isupper():
