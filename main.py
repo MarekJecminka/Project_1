@@ -89,7 +89,7 @@ elif registered[user_name] == user_password:
           "There are " + len(numbers) + " numeric strings.",
           "The sum of all the numbers " + sum(numbers),
           40 * "-",
-          "LEN|     OCCURENCES      |NR.",
+          "LEN|OCCURENCES.center(22)|NR.",
           40 * "-",
           sep = '\n')
 
