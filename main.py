@@ -48,7 +48,7 @@ if not user_name in list(registered):
 elif registered[user_name] == user_password:
     print("username:" + user_name,
           password:" + user_password,
-          40 * "-", 
+          40 * "-",
           "Welcome to the app, " + user_name,
           "We have " + str(len(TEXTS)) + " texts to be analyzed.",
           40 * "-", sep = "\n")
@@ -81,16 +81,17 @@ elif registered[user_name] == user_password:
         elif word.isdigit():
             numbers.append(int(word))
     
-    print(40 * "-")
-    print("There are", len(words), "words in the selected text.")
-    print("There are", len(title_words), "titlecase words.")
-    print("There are", len(upper_words), "uppercase words.")
-    print("There are", len(lower_words), "lowercase words.")
-    print("There are", len(numbers), "numeric strings")
-    print("The sum of all the numbers", sum(numbers))
-    print(40 * "-")
-    print("LEN|     OCCURENCES      |NR.")
-    print(40 * "-")
+    print(40 * "-",
+          "There are " + len(words) + " words in the selected text.",
+          "There are " + len(title_words) + " titlecase words.",
+          "There are " + len(upper_words) + " uppercase words.",
+          "There are " + len(lower_words) + " lowercase words.",
+          "There are " + len(numbers) + " numeric strings.",
+          "The sum of all the numbers " + sum(numbers),
+          40 * "-",
+          "LEN|     OCCURENCES      |NR.",
+          40 * "-",
+          sep = '\n')
 
     words_length = []
     
