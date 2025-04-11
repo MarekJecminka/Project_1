@@ -38,7 +38,7 @@ registered = {"bob": "123", "ann": "pass123", "mike": "password123", "liz": "pas
 user_name = input("Please enter your username: ")
 user_password = input("Please enter your password: ")
 
-if user_name not in list(registered):
+if not user_name in list(registered):
     print("username:" + user_name,
           "password:" + user_password,
           "unregistered user, terminating the program...",
@@ -46,19 +46,19 @@ if user_name not in list(registered):
     quit()
 
 elif registered[user_name] == user_password:
-    print("\nusername:" + user_name +
-          "\npassword:" + user_password)
-    print(40 * "-")
-    print("Welcome to the app,", user_name,
-          "\nWe have", str(len(TEXTS)), "texts to be analyzed.")
-    print(40 * "-")
+    print("username:" + user_name,
+          password:" + user_password,
+          40 * "-", 
+          "Welcome to the app, " + user_name,
+          "We have " + str(len(TEXTS)) + " texts to be analyzed.",
+          40 * "-", sep = "\n")
     selection = input("Enter a number btw. 1 and " + str(len(TEXTS)) + " to select: ")
 
     if not selection.isdigit():
         print("Yous selection is not digit. Please enter digit next time!")
         quit()
 
-    elif int(selection) not in range(1, len(TEXTS) + 1):
+    elif not int(selection) in range(1, len(TEXTS) + 1):
         print("Your selection is not in range. Please enter a number btw. 1 and " + str(len(TEXTS)) + " next time!")
         quit()
     
