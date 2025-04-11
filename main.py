@@ -39,9 +39,10 @@ user_name = input("Please enter your username: ")
 user_password = input("Please enter your password: ")
 
 if user_name not in list(registered):
-    print("username:" + user_name)
-    print("password:" + user_password)
-    print("unregistered user, terminating the program...")
+    print("username:" + user_name,
+          "password:" + user_password,
+          "unregistered user, terminating the program...",
+          sep = "\n")
     quit()
 
 elif registered[user_name] == user_password:
