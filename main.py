@@ -46,20 +46,24 @@ if not user_name in list(registered):
     quit()
 
 elif registered[user_name] == user_password:
-    print("username:" + user_name,
-          password:" + user_password,
-          40 * "-",
-          "Welcome to the app, " + user_name,
-          "We have " + str(len(TEXTS)) + " texts to be analyzed.",
-          40 * "-", sep = "\n")
+    print("username: " + user_name,
+        "password: " + user_password,
+        40 * "-",
+        "Welcome to the app, " + user_name + ".",
+        "We have " + str(len(TEXTS)) + " texts to be analyzed.",
+        40 * "-",
+        sep = "\n")
     selection = input("Enter a number btw. 1 and " + str(len(TEXTS)) + " to select: ")
 
     if not selection.isdigit():
-        print("Yous selection is not digit. Please enter digit next time!")
+        print("Your selection is not digit. Please enter digit next time!")
         quit()
 
     elif not int(selection) in range(1, len(TEXTS) + 1):
-        print("Your selection is not in range. Please enter a number btw. 1 and " + str(len(TEXTS)) + " next time!")
+        print("Your selection is not in range. ", 
+              "Please enter a number btw. 1 and " + str(len(TEXTS)),
+              " next time!",
+              sep = "")
         quit()
     
     words = []
@@ -82,16 +86,16 @@ elif registered[user_name] == user_password:
             numbers.append(int(word))
     
     print(40 * "-",
-          "There are " + len(words) + " words in the selected text.",
-          "There are " + len(title_words) + " titlecase words.",
-          "There are " + len(upper_words) + " uppercase words.",
-          "There are " + len(lower_words) + " lowercase words.",
-          "There are " + len(numbers) + " numeric strings.",
-          "The sum of all the numbers " + sum(numbers),
-          40 * "-",
-          "LEN|OCCURENCES.center(22)|NR.",
-          40 * "-",
-          sep = '\n')
+        "There are " + str(len(words)) + " words in the selected text.",
+        "There are " + str(len(title_words)) + " titlecase words.",
+        "There are " + str(len(upper_words)) + " uppercase words.",
+        "There are " + str(len(lower_words)) + " lowercase words.",
+        "There are " + str(len(numbers)) + " numeric strings.",
+        "The sum of all the numbers " + str(sum(numbers)) + ".",
+        40 * "-",
+        "LEN|" + "OCCURENCES".center(21) + "|NR.",
+        40 * "-",
+        sep = '\n')
 
     words_length = []
     
@@ -100,7 +104,12 @@ elif registered[user_name] == user_password:
 
     for number in range(1, max(words_length) + 1):
         if number < 10:
-            print("  " + str(number) + "|" + words_length.count(number) * "*" + (21 - words_length.count(number)) * " " + "|" + str(words_length.count(number)))
+            print("  ", str(number), "|", words_length.count(number) * "*",
+                  (21 - words_length.count(number)) * " ", "|",
+                  str(words_length.count(number)),
+                  sep = "")
         else:
-            print(" " + str(number) + "|" + words_length.count(number) * "*" + (21 - words_length.count(number)) * " " + "|" + str(words_length.count(number)))
-
+            print(" ", str(number), "|", words_length.count(number) * "*",
+                  (21 - words_length.count(number)) * " ", "|",
+                  str(words_length.count(number)),
+                  sep = "")
